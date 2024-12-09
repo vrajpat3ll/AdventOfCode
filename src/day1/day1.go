@@ -8,12 +8,7 @@ import (
 	"sort"
 )
 
-func main() {
-	part1()
-	part2()
-}
-
-func part2() {
+func readFile() string {
 	filepath := "../input/day1.txt"
 	data, e := os.ReadFile(filepath)
 
@@ -25,6 +20,17 @@ func part2() {
 	fmt.Println(string(data))
 
 	contents := string(data)
+	return contents
+}
+
+func main() {
+	contents := readFile()
+	part1(contents)
+	part2(contents)
+}
+
+func part2(contents string) {
+
 	leftList := make([]int32, 0)
 	rightList := make([]int32, 0)
 
@@ -69,18 +75,8 @@ func part2() {
 	println("sum:", sum)
 }
 
-func part1() {
-	filepath := "../input/day1.txt"
-	data, e := os.ReadFile(filepath)
+func part1(contents string) {
 
-	if e != nil {
-		log.Fatal("[ERROR] while reading file: ", e)
-		os.Exit(1)
-	}
-	fmt.Println("[INFO] file: ", filepath, " read successfully!")
-	fmt.Println(string(data))
-
-	contents := string(data)
 	leftList := make([]int32, 0)
 	rightList := make([]int32, 0)
 
